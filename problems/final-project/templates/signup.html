@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sign Up
+{% endblock %}
+
+{% block main %}
+    <main class="container-fluid py-5 bg-gradient" style="min-height: 40rem; background-color: #460AF5;">
+        <br><br><br><br><br>
+        <div class="card mb-3 mx-auto text-center" style="max-width: 25rem;">
+            <div class="card-body m-auto">
+                <br>
+                {% if warning %}
+                    <div class="mb-4 bg-warning bg-opacity-10 border-warning border-top border-bottom border-3 container-sm">
+                        <p class="text-warning pt-3">{{ warning }}</p>
+                    </div>
+                {% else %}
+                    <br>
+                {% endif %}
+                <h2>Join the Community</h2>
+                <!-- Sign Up Form -->
+                <form action="/signup" method="post" class="container-md">
+                    <br><br>
+                    <div class="mb-3">
+                        <input autocomplete="off" autofocus class="form-control w-100" id="emailaddress" name="emailaddress" placeholder="Email address" type="text">
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control w-100" id="username" name="username" placeholder="Username" type="text">
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control w-100" id="password" name="password" placeholder="Password" type="password">
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control w-100" id="confirmation" name="confirmation" placeholder="Confirm password" type="password">
+                    </div>
+                    <br>
+                    <div class="mb-2">
+                        <button class="btn btn-primary w-100" type="submit">Sign Up</button>
+                    </div>
+                    {% if error %}
+                    <div class="mb-2">
+                        <p class="text-danger">
+                            <strong>{{ error }}</strong>
+                        </p>
+                    </div>
+                    {% endif %}
+                    <div class="mb-5">
+                        <p class="float-start lh-base">
+                            <a href="/login" class="text-black-50 float-start">Already have an account?</a>
+                        </p>
+                        <br>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <br><br>
+    </main>
+{% endblock %}

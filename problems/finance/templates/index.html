@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>TOTAL</th>
+            </tr>
+            <tbody>
+                {% for asset in portfolio %}
+                    <tr>
+                        <td>{{ asset["symbol"] }}</td>
+                        <td>{{ asset["SUM(quantity)"] }}</td>
+                        <td>{{ prices[loop.index0] | usd }}</td>
+                        <td>{{ ((prices[loop.index0]) * asset["SUM(quantity)"]) | usd }}</td>
+                    </tr>
+                {% endfor %}
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><b>Cash</b></td>
+                    <td>{{ balance | usd }}</td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><b>TOTAL</b></td>
+                    <td>{{ balance_total | usd }}</td>
+                </tr>
+            </tbody>
+        </thead>
+    </table>
+{% endblock %}

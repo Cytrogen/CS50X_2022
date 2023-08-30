@@ -1,0 +1,80 @@
+/* Images */
+.img-25 {
+    width: 1.5625rem;
+    height: 1.5625rem;
+}
+
+.img-35 {
+    width: 2.1875rem;
+    height: 2.1875rem;
+}
+
+.img-50 {
+    width: 3.125rem;
+    height: 3.125rem;
+}
+
+.img-100 {
+    width: 6.25rem;
+    height: 6.25rem;
+}
+
+.img-150 {
+    width: 9.375rem;
+    height: 9.375rem;
+}
+
+.img-200 {
+    width: 12.5rem;
+    height: 12.5rem;
+}
+
+/* Height */
+.height-200 {
+    height: 6.25rem;
+}
+
+.scrollspy-example {
+    position: relative;
+    height: 26.5625rem;
+    margin-top: .5rem;
+    overflow: auto;
+    min-height: 26.5625rem;
+}
+
+/* Tooltip */
+.tooltipright {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltipright .tooltext {
+    visibility: hidden;
+    display: inline;
+    white-space: nowrap;
+    border-radius: 0.25rem;
+    position: absolute;
+    left: 110%;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    margin-left: 0.75rem;
+    background-color: #280A7A;
+    color: white;
+}
+
+.tooltipright:hover .tooltext {
+    visibility: visible;
+}
+
+/* Sidebar Larger */
+#sidebarLarger {
+    background-color: #303440;
+}
+
+@media screen and (max-width: 400px) {
+    #sidebarLarger {
+        display: none;
+    }
+}

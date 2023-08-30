@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <main class="container-fluid bg-gradient" style="background-color: #2D08AE;">
+        <div class="container-fluid py-5">
+            <div class="mx-auto text-center">
+                <h1 class="display-2 text-light">Contact Us</h1>
+                <hr class="border border-gray border-4 mx-5">
+            </div>
+            <div class="container mx-auto rounded pb-5" style="background-color: #91A3B5;">
+                <div class="p-4">
+                    <div class="row">
+                        <div class="col-2"></div>
+                        {% if success %}
+                            <div class="col mb-4 border-success bg-light bg-opacity-50 border-top border-bottom border-3 mx-5 text-center mt-3">
+                                <p class="text-success pt-3">{{ success }}</p>
+                            </div>
+                        {% elif warning %}
+                            <div class="col mb-4 border-warning bg-light bg-opacity-50 border-top border-bottom border-3 mx-5 text-center mt-3">
+                                <p class="text-warning pt-3">{{ warning }}</p>
+                            </div>
+                        {% endif %}
+                        <div class="col-2"></div>
+                    </div>
+                    
+                    
+                    <form action="/contact" method="post">
+                        <div class="row align-items-start py-5 px-5">
+                            <div class="col"></div>
+                            <div class="col text-center">
+                                <p class="fs-2 my-auto">What is it about?</p>
+                            </div>
+                            <div class="col">
+                                <select class="form-select my-auto" name="selected">
+                                    <option selected>Select a topic</option>
+                                    <option value="1">Question</option>
+                                    <option value="2">Function Advice</option>
+                                    <option value="3">Design Enhancement</option>
+                                    <option value="4">Comment</option>
+                                    <option value="5">Others</option>
+                                </select>
+                            </div>
+                            <div class="col"></div>
+                        </div>
+                        <div class="row align-items-start pt-1 px-5">
+                            <div class="col-2"></div>
+                                <div class="col text-center">
+                                    <textarea class="form-control" id="textArea" name="textArea" placeholder="Write it down here ..." rows="6"></textarea>
+                                    <button class="btn btn-secondary w-100 mt-5" type="submit">
+                                        Submit
+                                    </button>
+                                </div>
+                            <div class="col-2"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <br><br><br>
+    </main>
+{% endblock %}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        
+        <!-- Bootstrap -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        
+        <!-- Bootstrap Icon -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+
+        <!-- Font Awesome -->
+        <script src="https://kit.fontawesome.com/0011a09a95.js" crossorigin="anonymous"></script>
+
+        <!-- Own CSS -->
+        <link href="/static/styles.css" rel="stylesheet">
+
+        <!-- Own JavaScript -->
+        <script src="/static/scripts.js" type="text/javascript"></script>
+
+        <!-- Website Info -->
+        <title>
+            {% block title %}{% endblock %} | Hotaru
+        </title>
+        <link rel="shortcut icon" href="/static/Hotaru.ico">
+    </head>
+
+    <body style="overflow-x: hidden;">
+        <!-- Nav Bar -->
+        <nav class="navbar bg-gradient" style="background-color: #FABE20;">
+            <div class="container-fluid">
+                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-1 justify-content-center mb-md-0">
+                        <li>
+                            <a class="nav-link pr-4 link-dark fw-bold" href="/">HOME</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Collapse Button -->
+                <div class="mx-3 btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+                    {% if session["user_id"] %}
+                        <img src={{ profile_icon }} class="img-50 rounded-circle" alt="">
+                    {% else %}
+                        <img src="/static/icons/Hotaru.png" class="img-50" alt="">
+                    {% endif %}
+                </div>
+                <div class="offcanvas offcanvas-end bg-gradient" data-bs-scroll="true" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel" style="background-color: #5214FA;">
+                    <div class="offcanvas-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <!-- Offcanvas Body Content -->
+                    <div class="offcanvas-body">
+                        {% if session["user_id"] %}
+                            <!-- Profile Icon -->
+                            <div class="container ml-5 mr-5 pb-3 text-center">
+                                <img src={{ profile_icon }} class="img-150 rounded-circle d-block mx-auto" alt="">
+                            </div>
+                            <!-- Profile Name -->
+                            <div class="container-fluid text-center text-light m-auto border border-opacity-25 border-3 border-primary" style="background-color: #4110C7;">
+                                <p class="fs-4" style="margin-top: 0.3125rem; margin-bottom: 0.3125rem;">
+                                    {{ profile_name }}
+                                </p>
+                            </div>
+                            <hr>
+                            <!-- Lists -->
+                            <ul class="nav nav-pills flex-column  mb-auto ml-5 mr-5 text-light pt-4">
+                                <!-- Edit Profile -->
+                                <li class="nav-item">
+                                    <a href="/profile" class="nav-link link-light fs-5" aria-current="page">
+                                        <i class="bi bi-pencil-square mx-4"></i>
+                                        Edit profile
+                                    </a>
+                                </li>
+                                <!-- Contact -->
+                                <li class="nav-item">
+                                    <a href="/contact" class="nav-link link-light fs-5" aria-current="page">
+                                        <i class="bi bi-envelope-paper mx-4"></i>
+                                        Contact us
+                                    </a>
+                                </li>
+                                <!-- Log Out -->
+                                <li class="nav-item">
+                                    <a href="/logout" class="nav-link link-light fs-5" aria-current="page">
+                                        <i class="bi bi-box-arrow-right mx-4"></i>
+                                        Log out
+                                    </a>
+                                </li>
+                            </ul>
+                        {% else %}
+                            <!-- Profile Icon -->
+                            <div class="container ml-5 mr-5 pb-3 text-center">
+                                <img src="/static/icons/Hotaru.png" class="img-150 rounded d-block mx-auto" alt="">
+                            </div>
+                            <!-- Profile Name -->
+                            <div class="container-fluid text-center text-light m-auto border border-opacity-25 border-3 border-primary" style="background-color: #4110C7;">
+                                <p class="fs-4" style="margin-top: 0.3125rem; margin-bottom: 0.3125rem;">
+                                    Ah oh!
+                                </p>
+                            </div>
+                            <div class="container-md text-center text-light m-auto pt-4 pb-3">
+                                <p>
+                                    You haven't log in yet ... !
+                                </p>
+                            </div>
+                            <hr>
+                            <!-- Lists -->
+                            <ul class="nav nav-pills flex-column  mb-auto ml-5 mr-5 text-light pt-4">
+                                <!-- Log In -->
+                                <li class="nav-item">
+                                    <a href="/login" class="nav-link link-light fs-5" aria-current="page">
+                                        <i class="bi bi-person-circle mx-4"></i>
+                                        Log in
+                                    </a>
+                                </li>
+                                <!-- Sign Up -->
+                                <li class="nav-item">
+                                    <a href="/signup" class="nav-link link-light fs-5" aria-current="page">
+                                        <i class="bi bi-person-plus mx-4"></i>
+                                        Sign up
+                                    </a>
+                                </li>
+                                <!-- Contact -->
+                                <li class="nav-item">
+                                    <a href="/contact" class="nav-link link-light fs-5" aria-current="page">
+                                        <i class="bi bi-envelope-paper mx-4"></i>
+                                        Contact us
+                                    </a>
+                                </li>
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- End Nav Bar -->
+
+        <!-- Main -->
+        {% block main %}
+        {% endblock %}
+
+        <!-- Footer -->
+        <footer class="small text-center text-white py-3 bg-gradient" style="background-color: #FEA01A;">
+            ©2022 Cytrogen. All Rights Reserved.
+        </footer>
+    </body>
+</html>

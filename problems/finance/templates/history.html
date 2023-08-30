@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Transaction ID</th>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Price</th>
+            </tr>
+            <tbody>
+                {% for asset in portfolio  %}
+                    <tr>
+                        <td>{{ asset["id"] }}</td>
+                        <td>{{ asset["symbol"] }}</td>
+                        <td>{{ asset["quantity"] }}</td>
+                        <td>{{ asset["price"] | usd }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </thead>
+    </table>
+{% endblock %}

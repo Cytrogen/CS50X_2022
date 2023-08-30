@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block main %}
+    <main class="container-fluid bg-gradient" style="background-color: #2D08AE;">
+        <div class="container py-5">
+            <div class="row p-5 bg-gradient" style="background-color: #91A3B5;">
+                <div class="col pb-4 text-center">
+                    <img src="{{ profile_icon }}" class="img-200 rounded-circle d-block mx-auto" alt="">
+                    <p class="fs-2 fw-bold my-3">
+                        {{ profile_name }}
+                    </p>
+                    <p class="fs-6 fw-light">
+                        A member since {{ confirmed_time }}
+                    </p>
+                </div>
+                <hr>
+                <div class="col p-5">
+                    <div class="row">
+                        <div class="col-5 text-center">
+                            <p class="fs-5 fw-bold">
+                                Avatar
+                            </p>
+                        </div>
+                        <form action="/profile" method="post" class="col-7" enctype="multipart/form-data">
+                            <!-- Upload Own -->
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="firstRadio" id="uploadRadio" value="uploadRadio">
+                                <label class="form-check-label" for="uploadRadio">
+                                    Upload your own
+                                </label>
+                                <div class="mb-4 d-grid col-6">
+                                    <input class="form-control" type="file" id="file" name="file" accept="/png,.jpg,.jpeg">
+                                </div>
+                            </div>
+
+                            <!-- Create Random -->
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="firstRadio" id="createRadio" value="createRadio">
+                                <label class="form-check-label" for="createRadio">
+                                    Generate a random one
+                                </label>
+
+                                <!-- Second Radio -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="secondRadio" id="createRadioDefault" value="createRadioDefault">
+                                    <label class="form-check-label" for="createRadioDefault">
+                                        Default style
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="secondRadio" id="createRadioMonster" value="createRadioMonster">
+                                    <label class="form-check-label" for="createRadioMonster">
+                                        Monster style
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="secondRadio" id="createRadioRobot" value="createRadioRobot">
+                                    <label class="form-check-label" for="createRadioRobot">
+                                        Robotic style
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="secondRadio" id="createRadioWav" value="createRadioWav">
+                                    <label class="form-check-label" for="createRadioWav">
+                                        Wavatar style
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="secondRadio" id="createRadioBit" value="createRadioBit">
+                                    <label class="form-check-label" for="createRadioBit">
+                                        8-Bit style
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="my-3 d-grid col-6">
+                                {% if warning %}
+                                    <p class="text-danger pt-3">{{ warning }}</p>
+                                {% endif %}
+                                <button class="btn btn-secondary w-100" type="submit">
+                                    Change avatar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

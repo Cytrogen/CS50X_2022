@@ -1,0 +1,138 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <main class="container-fluid min-vh-100 bg-gradient" style="background-color: #2D08AE;">
+        <!-- If User Logged In -->
+        {% if session["user_id"] %}
+            <div class="row flex-nowrap">
+                <!-- Sidebar -->
+                <div class="col-auto bg-dark">
+                    <div class="d-flex flex-column align-items-center align-items-sm-start pt-2 text-light min-vh-100">
+                        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu" style="z-index: 100;">
+                            <!-- General -->
+                            <li class="nav-item">
+                                <a href="/chat/general" class="nav-link py-3 rounded-0 tooltipright">
+                                    <i class="bi bi-chat-left-dots fs-3"></i>
+                                    <span class="tooltext">
+                                        General
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Book -->
+                            <li class="nav-item">
+                                <a href="/chat/book" class="nav-link py-3 rounded-0 tooltipright">
+                                    <i class="bi bi-book fs-3"></i>
+                                    <span class="tooltext">
+                                        Book
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Science -->
+                            <li class="nav-item">
+                                <a href="/chat/science" class="nav-link py-3 rounded-0 tooltipright">
+                                    <i class="bi bi-lightbulb fs-3"></i>
+                                    <span class="tooltext">
+                                        Science
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Code -->
+                            <li class="nav-item">
+                                <a href="/chat/code" class="nav-link py-3 rounded-0 tooltipright">
+                                    <i class="bi bi-code-square fs-3"></i>
+                                    <span class="tooltext">
+                                        Code
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Art -->
+                            <li class="nav-item">
+                                <a href="/chat/art" class="nav-link py-3 rounded-0 tooltipright">
+                                    <i class="bi bi-palette fs-3"></i>
+                                    <span class="tooltext">
+                                        Art
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Music -->
+                            <li class="nav-item">
+                                <a href="/chat/music" class="nav-link py-3 rounded-0 tooltipright">
+                                    <i class="bi bi-music-note-list fs-3"></i>
+                                    <span class="tooltext">
+                                        Music
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Game -->
+                            <li class="nav-item">
+                                <a href="/chat/game" class="nav-link py-3 rounded-0 tooltipright">
+                                    <i class="bi bi-controller fs-3"></i>
+                                    <span class="tooltext">
+                                        Game
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Channel Title -->
+                <div class="col-auto align-items-start px-0 flex-grow-1">
+                    <div class="p-2 text-light fs-4 font-monospace border border-start-0 border-top-0 rounded-bottom border-3" style="background-color: #303440; position: absolute;">
+                        {{ channel_name }}
+                    </div>
+
+                    <div class="m-5 pt-1" style="width: 80%;">
+                        <!-- Show Chat Record -->
+                        <div data-bs-spy="scroll" data-bs-smooth-scroll="true" class="scrollspy-example bg-gradient rounded-top p-3" style="background-color: #91A3B5;">
+                            {% for record in records %}
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0">
+                                        <img src={{ record.icon }} class="img-35 rounded-circle" alt="">
+                                    </div>
+                                    <div style="overflow: hidden">
+                                        <p class="fw-bold px-3" style="float: left">
+                                            {{ record.sender_name }}
+                                        </p>
+                                        <p class="fw-light fst-italic font-monospace text-muted" style="float: right">
+                                        {{ record.time }}
+                                    </p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <p class="px-5">
+                                        {{ record.text }}
+                                    </p>
+                                </div>
+                                <hr>
+                            {% endfor %}
+                        </div>
+
+                        <!-- Input Section -->
+                        <div class="bg-gradient rounded-bottom pb-5" style="background-color: #91A3B5;">
+                            <form action={{ name_URL }} method="post">
+                                <div class="input-group flex-wrap">
+                                    <textarea class="form-control" name="textArea" id="textArea" rows="4" placeholder="Type your message here ..."></textarea>
+                                </div>
+                                <button class="btn btn-outline-dark float-end" type="submit">Send</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="container-fluid">
+                <!-- Show Main Lobby -->
+                <div class="container-fluid text-center float-start text-white" style="padding: 15.625rem 6.25rem;">
+                    <h1 class="display-1 border border-5 border-light">Welcome to Hotaru!</h1>
+                    <br>
+                    <p class="lead">A Web Based Instant Messaging Social Platform</p>
+                </div>
+            </div>
+        {% endif %}
+    </main>
+{% endblock %}

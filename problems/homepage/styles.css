@@ -1,0 +1,47 @@
+/* Classes */
+
+/* Text */
+.text-center {
+    text-align: center;
+}
+
+/* Background Color */
+.bg-red {
+    background-color: #e50012;
+}
+
+.bg-orange {
+    background-color: #fa6f05;
+}
+
+/* Image Size */
+.img-420 {
+    width: 420px;
+    height: 420px;
+}
+
+.img-140 {
+    width: 140px;
+    height: 140px;
+}
+
+.img-500 {
+    width: 500px;
+    height: 500px;
+}
+
+/* id-s */
+#logo-vector {
+    height: auto;
+    max-width: 451px;
+}
+
+#slide-ul {
+    margin: 0 auto;
+    text-align: center;
+    padding: 0;
+}
+
+#text-limited {
+    height: 100px;
+}
